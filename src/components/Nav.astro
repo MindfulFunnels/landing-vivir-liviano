@@ -1,0 +1,110 @@
+---
+interface NavItem {
+  label: string;
+  href: string;
+}
+interface Props {
+  navItems: NavItem[];
+  ctaLabel: string;
+  ctaHref: string;
+}
+const { navItems, ctaLabel, ctaHref } = Astro.props;
+import CTAButton from "./CTAButton.astro";
+---
+
+<div
+  class='fixed top-0 left-0 right-0 z-[9999] pointer-events-none'
+  x-data='{ open: false }'
+>
+  <nav
+    class='w-full pointer-events-auto transition-all duration-300 backdrop-blur-md bg-[color:var(--color-secondary)/20] hover:bg-[color:var(--color-secondary)/90] overflow-x-hidden'
+  >
+    <div class='max-w-7xl mx-auto px-4 sm:px-6'>
+      <div class='flex items-center justify-between h-16'>
+        {/* Logo */}
+
+        <a href='/' class='flex items-center hover:animate-pulse'>
+          <img src='/logo.png' alt='Logo' class='w-40' />
+        </a>
+
+        {/* Navegación Desktop */}
+        <div class='hidden md:block'>
+          <div class='ml-10 flex items-baseline space-x-4'>
+            {
+              Array.isArray(navItems) &&
+                navItems.map((item) => (
+                  <a
+                    href={item.href}
+                    class='text-[color:var(--color-text)] hover:text-[color:var(--color-accent)] px-3 py-2 text-lg font-medium transition-colors duration-300'
+                  >
+                    {item.label}
+                  </a>
+                ))
+            }
+          </div>
+        </div>
+
+        {/* CTA Desktop */}
+        <div class='hidden md:block'>
+          <CTAButton
+            href={ctaHref}
+            label={ctaLabel}
+            class='hover:shadow-none'
+          />
+        </div>
+
+        {/* Menú móvil button */}
+        <div class='md:hidden flex items-center space-x-2'>
+          <CTAButton
+            href={ctaHref}
+            label={ctaLabel}
+            class='hover:shadow-none hover:border-2'
+          />
+          <button
+            class='text-[color:var(--color-text)] hover:text-[color:var(--color-primary)] inline-flex items-center justify-center p-2 rounded-md transition-colors duration-300'
+            @click='open = !open'
+            aria-label='Menú'
+          >
+            <svg
+              class='h-6 w-6'
+              stroke='currentColor'
+              fill='none'
+              viewBox='0 0 24 24'
+            >
+              <path
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                stroke-width='2'
+                d='M4 6h16M4 12h16M4 18h16'></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Menú móvil */}
+      <div
+        class='md:hidden'
+        x-show='open'
+        x-transition
+        @click.away='open = false'
+      >
+        <div class='px-2 pt-2 pb-3 space-y-1 sm:px-3'>
+          {
+            Array.isArray(navItems) &&
+              navItems.map((item) => (
+                <a
+                  href={item.href}
+                  class='text-[color:var(--color-text)] hover:text-[color:var(--color-primary)] block px-3 py-2 text-base font-medium transition-colors duration-300'
+                  @click='open = false'
+                >
+                  {item.label}
+                </a>
+              ))
+          }
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class='h-16'></div>

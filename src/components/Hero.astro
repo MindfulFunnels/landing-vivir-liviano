@@ -1,0 +1,62 @@
+---
+import CTAButton from "./CTAButton.astro";
+
+interface Props {
+  title: string;
+  id: string;
+  subtitle: string;
+  text?: string;
+  ctaText: string;
+  ctaLink: string;
+  hideSecondaryButton?: boolean;
+}
+
+const {
+  title,
+  subtitle,
+  ctaText,
+  ctaLink,
+  text,
+  hideSecondaryButton = false,
+} = Astro.props;
+---
+
+<div
+  class='flex items-center justify-center py-16 min-h-screen px-4 sm:px-6 lg:px-8 w-full'
+  id='hero'
+>
+  <img
+    src='/cover.png'
+    alt='Background cover'
+    class='justify-start absolute w-[300px] sm:w-[400px] md:w-[500px] lg:w-[550px] h-auto opacity-60 mix-blend-overlay pointer-events-none object-contain max-w-[45vw] md:left-0'
+    style='mask-image: linear-gradient(black 80%, transparent );'
+  />
+  <div
+    class='z-10 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 gap-8 text-center'
+  >
+    <h1
+      class='font-bold text-6xl mb-4 sm:mb-6 text-[color:var(--color-primary)]'
+    >
+      {title}
+    </h1>
+
+    <p class='subtitle text-[color:var(--color-secondary)]'>
+      {subtitle}
+    </p>
+
+    {text && <h3>{text}</h3>}
+
+    <div
+      class='flex flex-col sm:flex-row justify-center items-center gap-8 p-8'
+    >
+      <CTAButton href={ctaLink} label={ctaText} variant='primary' />
+
+      <CTAButton
+        href='#live-event'
+        label='Quiero saber más'
+        variant='secondary'
+        class={hideSecondaryButton ? "hidden" : ""}
+      />
+    </div>
+  </div>
+</div>

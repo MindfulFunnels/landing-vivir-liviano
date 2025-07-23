@@ -1,11 +1,132 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import TransformationSection from "../components/TransformationSection.astro";
+import AboutSection from "../components/AboutSection.astro";
+import CaminoSection from "../components/CaminoSection.astro";
+import TestimonialsSection from "../components/TestimonialsSection.astro";
+import FinalCTASection from "../components/FinalCTASection.astro";
+import LiveEventSection from "../components/LiveEventSection.astro";
+import CTAButton from "../components/CTAButton.astro";
+import ProblemSection from "../components/ProblemSection.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Copys centralizados para toda la landing
+const copys = {
+  liveEvent: {
+    title: "Evento en Vivo",
+    whenWhere: "Cuándo y dónde",
+    dateLabel: "Fecha",
+    date: "Domingo 7 de Septiembre",
+    timeLabel: "Horario",
+    subtitle:
+      "La clase es gratuita, en vivo, y con espacio para preguntas reales. Cupos limitados para quienes estén listos para dejar de sobrevivir emocionalmente y empezar a relacionarse desde su verdad.",
+    times: [
+      { country: "España", time: "00:00h España", flag: "fi fi-es" },
+      { country: "Argentina", time: "19:00h Argentina", flag: "fi fi-ar" },
+      { country: "México", time: "16:00h México", flag: "fi fi-mx" },
+      { country: "Miami", time: "18:00h Miami", flag: "fi fi-us" },
+      { country: "Colombia", time: "17:00h Colombia", flag: "fi fi-co" },
+      { country: "Chile", time: "18:00h Chile", flag: "fi fi-cl" },
+      { country: "Perú", time: "17:00h Perú", flag: "fi fi-pe" },
+      { country: "Venezuela", time: "18:00h Venezuela", flag: "fi fi-ve" },
+    ],
+    platformLabel: "Plataforma",
+    importantLabel: "Importante",
+    importantText:
+      "Al registrarte, recibirás el enlace directo a tu email. No te pierdas esta oportunidad única de transformar tus vínculos desde la raíz.",
+  },
+  registerBox: {
+    title: "Inicia tu Transformación",
+    namePlaceholder: "Tu nombre y apellido*",
+    emailPlaceholder: "Tu email*",
+    buttonText: "Registrarme",
+    errorEmpty: "Por favor, rellena todos los campos",
+    errorEmail: "Por favor, ingresa un email válido",
+    errorServer: "Hubo un error al procesar tu solicitud. Intenta nuevamente.",
+    success: "¡Registro exitoso! Te redirigiremos en breve...",
+    secureMessage:
+      "Tus datos están seguros. Solo los usaremos para enviarte información sobre la masterclass.",
+  },
+};
 ---
 
-<Layout>
-	<Welcome />
+<Layout title='Vivir Liviano' hideNav={false}>
+  <main>
+    <Hero
+      id='hero'
+      title='¿Sos espiritual pero tus vínculos siguen doliendo?'
+      subtitle='Descubrí por qué no podés sostener la paz que tanto buscás, y cómo empezar a sanar desde la raíz.'
+      text='Una clase gratuita para dejar de repetir patrones, soltar la angustia emocional y transformar tus vínculos desde la consciencia de unidad.'
+      ctaText='Reservar mi lugar en la masterclass'
+      ctaLink='#register'
+    />
+
+    <FinalCTASection
+      id='register'
+      title='El primer paso hacia relaciones que no duelen'
+      description='En esta masterclass vas a aprender por qué, a pesar de todo el trabajo interno que hiciste, seguís cargando vínculos que te duelen… y cómo dar el primer paso hacia relaciones más livianas, coherentes y en paz sin desconectarte de vos ni seguir actuando desde el miedo.'
+    />
+
+    <LiveEventSection id='live-event' {...copys.liveEvent} />
+
+    <ProblemSection
+      id='you-will-learn'
+      title='¿Qué vas a aprender?'
+      questions={[
+        "Los 3 errores más comunes que cometen las personas espirituales en sus vínculos (aunque hayan hecho terapias o procesos).",
+        "Cómo identificar el patrón emocional raíz que seguís repitiendo en tus relaciones.",
+        "Por qué “entender lo que te pasa” no es suficiente si no bajás el proceso al cuerpo y a lo cotidiano.",
+        "Qué significa realmente sanar desde la consciencia de unidad (y por qué no es algo “místico” ni complejo).",
+        "El mapa para volver a sentirte en casa: cómo se ve una relación en paz, desde vos hacia los demás.",
+      ]}
+    />
+
+    <CTAButton
+      href='#register'
+      label='Quiero vivir esta transformación'
+      variant='secondary'
+    />
+
+    <TransformationSection
+      id='learn-more'
+      title='¿Qué te llevas de esta clase?'
+      benefits={[
+        "Claridad emocional sobre qué te está trabando.",
+        "El primer paso real para dejar de repetir lo mismo de siempre.",
+        "Herramientas concretas que podés empezar a aplicar hoy mismo.",
+        "Una mirada distinta, amorosa y ordenada sobre vos y tus vínculos.",
+        "Acceso anticipado a mi proceso completo de transformación vincular.",
+      ]}
+    />
+
+    <CTAButton
+      href='#register'
+      label='Reservar mi lugar en la masterclass'
+      variant='primary'
+    />
+
+    <CaminoSection
+      id='who-is-it-for'
+      title='Para quien esta destinado este evento'
+      steps={[
+        "Sentís que ya probaste de todo, pero seguís estancada/o en vínculos que te cargan, frustran o duelen.",
+        "Te cuesta poner límites sin culpa.",
+        "Te identificás con la espiritualidad, pero aún vivís con angustia o ansiedad emocional en tus relaciones más cercanas.",
+        "Ya no querés más teoría, querés integrar y transformar.",
+        "Tenés claridad interna… pero no paz sostenida.",
+      ]}
+    />
+
+    <CTAButton href='#register' label='Reservar lugar' variant='secondary' />
+
+    <TestimonialsSection id='testimonials' title='Testimonios' />
+
+    <AboutSection
+      title='Nacho Fernandez - Vivir Liviano'
+      text='Soy acompañante en Bioneuroemocion®, especialista en filosofía Tolteca y leyes universales. Combino estas 3 corrientes para enseñarte a crecer utilizando las experiencias de estrés con tu pareja. Logrando vivir la vida de una manera más relajada, liviana y sin tanto drama.'
+      phrase='Siempre que haya pérdida de energía hay error de interpretación.'
+    />
+
+    <CTAButton href='#register' label='Anotarme ahora' variant='primary' />
+  </main>
 </Layout>

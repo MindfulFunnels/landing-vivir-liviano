@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string;
+  id: string;
+  description?: string;
+  steps: string[];
+  inclusions?: string[];
+}
+
+const { title, description, steps, inclusions, id } = Astro.props;
+---
+
+<div class='py-24' id={id}>
+  <div class='mx-auto relative z-10 px-4 sm:px-6 lg:px-8'>
+    <div class='text-center'>
+      <h2 class='font-bold mb-10 gradient-text'>
+        {title}
+      </h2>
+      {description && <p class='subtitle mb-10 text-center'>{description}</p>}
+      <div class='flex flex-col gap-8'>
+        {
+          steps.map((step, index) => (
+            <div class='text-center justify-center flex p-6 rounded-lg border '>
+              <p class='text-base md:text-lg text-center justify-center text-[var(--color-secondary)]'>
+                {step}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>

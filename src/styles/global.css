@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bigshot+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amarante&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
+
+
+@import "tailwindcss";
+@import 'flag-icons/css/flag-icons.min.css';
+
+/*
+  Personaliza tu landing cambiando solo estas variables:
+  --color-primary: color principal de la marca
+  --color-secondary: color secundario
+  --color-accent: color de acento (botones, detalles)
+  --color-bg: color de fondo principal
+  --color-bg-alt: color de fondo alternativo
+  --color-text: color principal de texto
+  --color-text-alt: color alternativo de texto
+  Cambia también la fuente en la regla html si lo deseas.
+*/
+:root {
+  --color-primary: #0077B6;
+  --color-secondary: #03045E;
+  --color-accent: #00B4D8;
+  --color-bg: #CAF0F8;
+  --color-bg-alt: #90E0EF;
+  --color-text: #03045E;
+  --color-text-alt: #0077B6;
+}
+
+html {
+  font-family: 'Amarante', cursive;
+  font-size: 12px;
+  background: var(--color-bg);
+  background-attachment: fixed;
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+h1 {
+  font-family: 'Faculty Glyphic', sans-serif;
+  font-style: normal;
+}
+
+h2 {
+  @apply text-3xl lg:text-4xl ;
+  font-family: "Funnel Display", sans-serif;
+  
+}
+
+h3 {
+  @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
+  font-family: "Funnel Display", sans-serif;
+  
+}
+
+h4{
+  @apply text-base sm:text-lg md:text-xl; 
+  font-family: 'Michroma', sans-serif;
+  
+}
+
+.textevent{
+  @apply text-sm sm:text-base; 
+  
+}
+.subtitle {
+  @apply text-lg lg:text-2xl;
+  font-family: 'Bigshot One', cursive;
+  
+}
+
+p {
+  @apply text-xs sm:text-sm md:text-base;
+  
+}
+
+.text-xl {
+  @apply text-sm sm:text-base md:text-lg lg:text-xl;
+  
+}
+
+.text-2xl {
+  @apply text-base sm:text-lg md:text-xl lg:text-2xl;
+  
+}
+
+.text-3xl {
+  @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;  
+}
+
+.text-4xl {
+  @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+  
+}
+
+.text-5xl {
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+  
+}
+
+.text-6xl {
+  @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
+  
+}
+
+.container {
+  @apply max-w-[1600px] mx-auto px-4;
+}
+
+@layer components {
+  .glass-card {
+    @apply backdrop-blur-md border shadow-xl hover:shadow-2xl transition-all duration-300;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 1.25rem;
+    border: 1px solid var(--color-secondary);
+  }
+
+  .gradient-text {
+    color: var(--color-primary);
+    background: none;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+  }
+
+  .decorative-line {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:w-16 after:h-1 after:rounded-full;
+    --tw-after-bg: var(--color-accent);
+  }
+
+  .floating-shape {
+    @apply absolute w-32 h-32 rounded-full blur-2xl;
+    background: var(--color-accent);
+  }
+
+  .content-container {
+    @apply max-w-[1200px] mx-auto;
+  }
+
+  .section-gradient {
+    @apply absolute inset-0;
+    background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-primary) 60%, var(--color-secondary) 100%);
+  }
+
+  .section-overlay {
+    @apply absolute inset-0;
+    background: radial-gradient(circle at 60% 0%, transparent 0%, var(--color-bg-alt) 80%, var(--color-secondary) 100%);
+    opacity: 0.25;
+  }
+
+  .section-transition-top {
+    @apply absolute top-0 left-0 right-0 h-32;
+    background: linear-gradient(180deg, var(--color-secondary), transparent);
+  }
+
+  .section-transition-bottom {
+    @apply absolute bottom-0 left-0 right-0 h-32;
+    background: linear-gradient(0deg, var(--color-secondary), transparent);
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+
+  h1, h2, h3, h4 {
+    color: var(--color-primary);
+    text-shadow: none;
+  }
+
+  .section-gradient,
+  .section-overlay,
+  .section-transition-top,
+  .section-transition-bottom,
+  .floating-shape {
+    display: none !important;
+  }
+}

@@ -1,0 +1,47 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  benefits: string[];
+  id: string;
+}
+
+const { title, description, benefits, id } = Astro.props;
+---
+
+<div class='py-24 flex flex-col items-center text-center' id={id}>
+  <h2 class='font-bold mb-10 gradient-text'>
+    {title}
+  </h2>
+  {description && <p class='subtitle mb-10 text-center'>{description}</p>}
+  <div
+    class='items-center grid grid-cols-1 md:grid-cols-2 gap-8 rounded-lg p-4'
+  >
+    {
+      benefits.map((benefit) => (
+        <div class='p-8 rounded-lg transform hover:scale-105 transition-all  duration-300 bg-[var(--color-primary)] w-full text-[var(--color-accent)] shadow-lg'>
+          <div class='flex items-center w-full '>
+            <div class='h-10 rounded-full flex items-center justify-center mr-6 '>
+              <svg
+                class='w-5 h-5'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+              >
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M5 13l4 4L19 7'
+                />
+              </svg>
+            </div>
+            <p class='text-base md:text-lg text-left text-[var(--color-bg-alt)]'>
+              {benefit}
+            </p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>
