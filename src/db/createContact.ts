@@ -6,7 +6,7 @@ export async function createContact(
   nombre: string,
   email: string,
   slug = "first_name",
-  tagName = "alotroladodelamatrix"
+  tagName = "vivir-liviano" // Nombre de la tag a asignar
 ) {
   try {
     let contactoId: number;
@@ -75,7 +75,9 @@ export async function createContact(
       }
     );
 
-    const yaTieneTag = contactoDetalle.data.tags.some((t: any) => t.id === tagId);
+    const yaTieneTag = contactoDetalle.data.tags.some(
+      (t: any) => t.id === tagId
+    );
     if (yaTieneTag) {
       console.log(`⚠️ El contacto ya tiene la tag "${tagName}".`);
       return;

@@ -1,5 +1,5 @@
 const config = {
-  title: "Al otro lado de la matrix",
+  title: "Vivir Liviano",
   titleColor: "sepia3",
   subtitle: "",
 
