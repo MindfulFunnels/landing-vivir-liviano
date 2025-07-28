@@ -2,44 +2,43 @@
 interface Props {
   title: string;
   description?: string;
-  benefits: string[];
+  benefits?: string[];
   id: string;
 }
 
 const { title, description, benefits, id } = Astro.props;
 ---
 
-<div class='py-24 flex flex-col items-center text-center' id={id}>
-  <h2 class='font-bold mb-10 gradient-text'>
+<div
+  class='flex flex-col gap-8 px-4 py-24 text-left md:text-center div-reveal'
+  id={id}
+>
+  <h2 class='font-bold text-center'>
     {title}
   </h2>
-  {description && <p class='subtitle mb-10 text-center'>{description}</p>}
-  <div
-    class='items-center grid grid-cols-1 md:grid-cols-2 gap-8 rounded-lg p-4'
-  >
+  {description && <p class='subtitle'>{description}</p>}
+
+  <div class='grid gap-8 md:grid-cols-2'>
     {
-      benefits.map((benefit) => (
-        <div class='p-8 rounded-lg transform hover:scale-105 transition-all  duration-300 bg-[var(--color-primary)] w-full text-[var(--color-accent)] shadow-lg'>
-          <div class='flex items-center w-full '>
-            <div class='h-10 rounded-full flex items-center justify-center mr-6 '>
-              <svg
-                class='w-5 h-5'
-                fill='none'
-                stroke='currentColor'
-                viewBox='0 0 24 24'
-              >
-                <path
-                  stroke-linecap='round'
-                  stroke-linejoin='round'
-                  stroke-width='2'
-                  d='M5 13l4 4L19 7'
-                />
-              </svg>
-            </div>
-            <p class='text-base md:text-lg text-left text-[var(--color-bg-alt)]'>
-              {benefit}
-            </p>
-          </div>
+      benefits?.map((benefit) => (
+        <div class='group flex justify-center items-center gap-4 p-4 rounded-lg bg-[var(--color-primary)] shadow-lg transition-all duration-300 hover:scale-105 '>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 24 24'
+            id='Star--Streamline-Guidance-Free'
+            height='24'
+            width='24'
+            stroke='currentColor'
+            class='min-w-[24px] mt-1 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12'
+          >
+            <desc>Star Streamline Icon: https://streamlinehq.com</desc>
+            <path
+              d='M22.5 9.614h-1.93a8 8 0 0 1 -7.712 -5.871l-0.62 -2.243h-0.477l-0.619 2.243a8 8 0 0 1 -7.711 5.87H1.5V10l1.656 1.143a8 8 0 0 1 3.1 8.946L5.51 22.5H6l0.904 -0.747a8 8 0 0 1 10.192 0L18 22.5h0.49l-0.746 -2.41a8 8 0 0 1 3.1 -8.947L22.5 10v-0.386Z'
+              stroke-width='1'
+            />
+          </svg>
+          <h4 class='text-base md:text-lg'>{benefit}</h4>
         </div>
       ))
     }

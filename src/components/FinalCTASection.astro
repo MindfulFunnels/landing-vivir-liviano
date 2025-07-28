@@ -35,32 +35,30 @@ const {
 } = Astro.props;
 ---
 
-<div class='py-24' id={id}>
-  <div class='z-10 px-4 sm:px-6 lg:px-8'>
-    <div class='text-center'>
-      <h2 class='font-bold mb-10 gradient-text'>
-        {title}
-      </h2>
-      <div class='decorative-line mb-16'>
-        <h2 class='subtitle'>
-          {description}
-        </h2>
-      </div>
+<div
+  id={id}
+  class='z-10 flex flex-col items-center gap-4 px-4 py-24 text-center div-reveal sm:px-6 lg:px-8'
+>
+  <h2 class='font-bold gradient-text'>
+    {title}
+  </h2>
 
-      <div class='w-full'>
-        <RegisterBox
-          client:load
-          title={registerTitle}
-          namePlaceholder={registerNamePlaceholder}
-          emailPlaceholder={registerEmailPlaceholder}
-          buttonText={registerButtonText}
-          errorEmpty={registerErrorEmpty}
-          errorEmail={registerErrorEmail}
-          errorServer={registerErrorServer}
-          success={registerSuccess}
-          secureMessage={registerSecureMessage}
-        />
-      </div>
-    </div>
+  <h4 class='subtitle'>
+    {description}
+  </h4>
+
+  <div class='w-full'>
+    <RegisterBox
+      client:load
+      title={registerTitle}
+      namePlaceholder={registerNamePlaceholder}
+      emailPlaceholder={registerEmailPlaceholder}
+      buttonText={registerButtonText}
+      errorEmpty={registerErrorEmpty}
+      errorEmail={registerErrorEmail}
+      errorServer={registerErrorServer}
+      success={registerSuccess}
+      secureMessage={registerSecureMessage}
+    />
   </div>
 </div>

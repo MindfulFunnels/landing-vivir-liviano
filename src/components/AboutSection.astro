@@ -3,27 +3,32 @@ interface Props {
   title: string;
   phrase?: string;
   description?: string;
-  text?: string;
   achievements?: string[];
+  texts?: string[];
 }
 
-const { title, description, text, achievements, phrase } = Astro.props;
+const { title, description, texts, achievements, phrase } = Astro.props;
 ---
 
-<div class='relative py-24'>
-  <img
-    src='/about.png'
-    alt='About section background'
-    class='absolute top-0 right-0.5 object-contain w-[400px] sm:w-[400px] md:w-[450px] lg:w-[500px] h-full mix-blend-soft-light pointer-events-none opacity-90'
-  />
-  <div class='mx-auto relative z-10 px-4 sm:px-6 lg:px-8'>
-    <div class='text-center flex flex-col items-center gap-2'>
+<div
+  class='items-center justify-center w-full min-h-screen grid-cols-2 px-4 py-24 md:grid sm:px-6 lg:px-8'
+  id='about'
+>
+  <div class='relative z-10 px-4 mx-auto sm:px-6 lg:px-8'>
+    <div class='flex flex-col items-center gap-2 text-center'>
       <h2 class='font-bold gradient-text'>
         {title}
       </h2>
-      {description && <p class='subtitle mb-10 text-center'>{description}</p>}
-      <h3>{text}</h3>
-      {phrase && <p class='subtitle mb-10 text-center'>{phrase}</p>}
+      {description && <p class='mb-10 text-center subtitle'>{description}</p>}
+      {texts?.map((text) => <h4 class='mb-4 text-center '>{text}</h4>)}
     </div>
+  </div>
+  <div class='flex items-center'>
+    <img
+      src='/about.webp'
+      alt='About section background'
+      class='absolute justify-start object-contain w-auto pointer-events-none max-h-[600px] image-hero opacity-60 md:mt-2 mt-48'
+      style='mask-image: linear-gradient(blue 20%, transparent );'
+    />
   </div>
 </div>

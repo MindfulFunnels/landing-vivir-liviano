@@ -8,32 +8,21 @@ import TestimonialsSection from "../components/TestimonialsSection.astro";
 import FinalCTASection from "../components/FinalCTASection.astro";
 import LiveEventSection from "../components/LiveEventSection.astro";
 import CTAButton from "../components/CTAButton.astro";
-import ProblemSection from "../components/ProblemSection.astro";
+import WhatYouLearnSection from "../components/WhatYouLearnSection.astro";
 
 // Copys centralizados para toda la landing
 const copys = {
   liveEvent: {
-    title: "Evento en Vivo",
-    whenWhere: "Cuándo y dónde",
-    dateLabel: "Fecha",
-    date: "Domingo 7 de Septiembre",
-    timeLabel: "Horario",
-    subtitle:
-      "La clase es gratuita, en vivo, y con espacio para preguntas reales. Cupos limitados para quienes estén listos para dejar de sobrevivir emocionalmente y empezar a relacionarse desde su verdad.",
     times: [
-      { country: "España", time: "00:00h España", flag: "fi fi-es" },
-      { country: "Argentina", time: "19:00h Argentina", flag: "fi fi-ar" },
-      { country: "México", time: "16:00h México", flag: "fi fi-mx" },
-      { country: "Miami", time: "18:00h Miami", flag: "fi fi-us" },
-      { country: "Colombia", time: "17:00h Colombia", flag: "fi fi-co" },
-      { country: "Chile", time: "18:00h Chile", flag: "fi fi-cl" },
-      { country: "Perú", time: "17:00h Perú", flag: "fi fi-pe" },
-      { country: "Venezuela", time: "18:00h Venezuela", flag: "fi fi-ve" },
+      { country: "España", time: "00:00h", flag: "fi fi-es" },
+      { country: "Argentina", time: "19:00h", flag: "fi fi-ar" },
+      { country: "México", time: "16:00h", flag: "fi fi-mx" },
+      { country: "Miami", time: "18:00h", flag: "fi fi-us" },
+      { country: "Colombia", time: "17:00h", flag: "fi fi-co" },
+      { country: "Chile", time: "18:00h", flag: "fi fi-cl" },
+      { country: "Perú", time: "17:00h", flag: "fi fi-pe" },
+      { country: "Venezuela", time: "18:00h", flag: "fi fi-ve" },
     ],
-    platformLabel: "Plataforma",
-    importantLabel: "Importante",
-    importantText:
-      "Al registrarte, recibirás el enlace directo a tu email. No te pierdas esta oportunidad única de transformar tus vínculos desde la raíz.",
   },
   registerBox: {
     title: "Inicia tu Transformación",
@@ -51,28 +40,50 @@ const copys = {
 ---
 
 <Layout title='Vivir Liviano' hideNav={false}>
-  <main>
+  <main class='flex flex-col items-center justify-center mx-auto max-w-7xl'>
     <Hero
       id='hero'
       title='¿Sos espiritual pero tus vínculos siguen doliendo?'
-      subtitle='Descubrí por qué no podés sostener la paz que tanto buscás, y cómo empezar a sanar desde la raíz.'
-      text='Una clase gratuita para dejar de repetir patrones, soltar la angustia emocional y transformar tus vínculos desde la consciencia de unidad.'
-      ctaText='Reservar mi lugar en la masterclass'
+      subtitle='Hiciste cursos, terapia, constelaciones… pero seguís cargando relaciones que te drenan.'
+      text='Descubrí la raíz emocional que aún no pudiste ver, y cómo sanar tus vínculos más importantes desde la conciencia de unidad.'
+      ctaText=' Reservar mi lugar en la clase gratuita'
       ctaLink='#register'
     />
 
     <FinalCTASection
       id='register'
-      title='El primer paso hacia relaciones que no duelen'
-      description='En esta masterclass vas a aprender por qué, a pesar de todo el trabajo interno que hiciste, seguís cargando vínculos que te duelen… y cómo dar el primer paso hacia relaciones más livianas, coherentes y en paz sin desconectarte de vos ni seguir actuando desde el miedo.'
+      title='El primer paso para dejar de repetir vínculos que duelen'
+      description='En esta clase en vivo vas a entender por qué, después de tanto trabajo interno, tus relaciones más importantes siguen generándote angustia o confusión. Vas a aprender cómo dejar de actuar desde el miedo y empezar a vincularte desde la verdad, sin dejar de ser vos.'
     />
 
-    <LiveEventSection id='live-event' {...copys.liveEvent} />
+    <LiveEventSection
+      id='live-event'
+      {...copys.liveEvent}
+      title='Domingo 7 de Septiembre'
+      subtitle='Evento online en vivo '
+      dateLabel='Fecha'
+      date='Domingo 7 de Septiembre'
+      timeLabel='Horario'
+      importantLabel='⚠️ Importante'
+      importantText='La Clase no se graba. Es una experiencia única, solo en vivo.'
+      times={[
+        { country: "España", time: "00:00h", flag: "fi fi-es" },
+        { country: "Argentina", time: "19:00h", flag: "fi fi-ar" },
+        { country: "México", time: "16:00h", flag: "fi fi-mx" },
+        { country: "Miami", time: "18:00h", flag: "fi fi-us" },
+        { country: "Colombia", time: "17:00h", flag: "fi fi-co" },
+        { country: "Chile", time: "18:00h", flag: "fi fi-cl" },
+        { country: "Perú", time: "17:00h", flag: "fi fi-pe" },
+        { country: "Venezuela", time: "18:00h", flag: "fi fi-ve" },
+      ]}
+    />
 
-    <ProblemSection
+    <CTAButton href='#register' label='👉 Quiero mi lugar en la clase' />
+
+    <WhatYouLearnSection
       id='you-will-learn'
-      title='¿Qué vas a aprender?'
-      questions={[
+      title='¿Qué vas a descubrir en esta clase?'
+      bullets={[
         "Los 3 errores más comunes que cometen las personas espirituales en sus vínculos (aunque hayan hecho terapias o procesos).",
         "Cómo identificar el patrón emocional raíz que seguís repitiendo en tus relaciones.",
         "Por qué “entender lo que te pasa” no es suficiente si no bajás el proceso al cuerpo y a lo cotidiano.",
@@ -81,11 +92,7 @@ const copys = {
       ]}
     />
 
-    <CTAButton
-      href='#register'
-      label='Quiero vivir esta transformación'
-      variant='secondary'
-    />
+    <CTAButton href='#register' label='Quiero vivir esta transformación' />
 
     <TransformationSection
       id='learn-more'
@@ -95,38 +102,45 @@ const copys = {
         "El primer paso real para dejar de repetir lo mismo de siempre.",
         "Herramientas concretas que podés empezar a aplicar hoy mismo.",
         "Una mirada distinta, amorosa y ordenada sobre vos y tus vínculos.",
-        "Acceso anticipado a mi proceso completo de transformación vincular.",
+        "Acceso anticipado al proceso completo de transformación junto con bonos exclusivos.",
+      ]}
+    />
+
+    <CTAButton href='#register' label='Reservar mi lugar en la masterclass' />
+
+    <CaminoSection
+      id='who-is-it-for'
+      title='Esta clase es para vos si…'
+      steps={[
+        "Probaste de todo… pero tus relaciones te siguen cargando",
+        "Te cuesta poner límites sin culpa",
+        "Vivís angustia o ansiedad en tus vínculos más cercanos",
+        "Te identificás con lo espiritual, pero no con la paz",
+        "Ya no querés más teoría: querés integrar, transformar y vivir distinto",
       ]}
     />
 
     <CTAButton
       href='#register'
-      label='Reservar mi lugar en la masterclass'
-      variant='primary'
+      label='Reservar mi lugar y entender qué me está trabando'
     />
 
-    <CaminoSection
-      id='who-is-it-for'
-      title='Para quien esta destinado este evento'
-      steps={[
-        "Sentís que ya probaste de todo, pero seguís estancada/o en vínculos que te cargan, frustran o duelen.",
-        "Te cuesta poner límites sin culpa.",
-        "Te identificás con la espiritualidad, pero aún vivís con angustia o ansiedad emocional en tus relaciones más cercanas.",
-        "Ya no querés más teoría, querés integrar y transformar.",
-        "Tenés claridad interna… pero no paz sostenida.",
+    <TestimonialsSection
+      id='testimonials'
+      title='Lo que dicen quienes ya pasaron por este proceso…'
+    />
+
+    <CTAButton href='#register' label='Quiero vivir esta transformación' />
+
+    <AboutSection
+      title='Tu guía en esta clase'
+      texts={[
+        "Soy Nacho Fernández, acompañante en Bioneuroemoción®, especialista en filosofía Tolteca y leyes universales.",
+        "Combino 3 caminos para enseñarte a crecer desde las experiencias más dolorosas de tu vida vincular.",
+        "Mi enfoque no es místico, es claro, humano y transformador.",
       ]}
     />
 
-    <CTAButton href='#register' label='Reservar lugar' variant='secondary' />
-
-    <TestimonialsSection id='testimonials' title='Testimonios' />
-
-    <AboutSection
-      title='Nacho Fernandez - Vivir Liviano'
-      text='Soy acompañante en Bioneuroemocion®, especialista en filosofía Tolteca y leyes universales. Combino estas 3 corrientes para enseñarte a crecer utilizando las experiencias de estrés con tu pareja. Logrando vivir la vida de una manera más relajada, liviana y sin tanto drama.'
-      phrase='Siempre que haya pérdida de energía hay error de interpretación.'
-    />
-
-    <CTAButton href='#register' label='Anotarme ahora' variant='primary' />
+    <CTAButton href='#register' label='Anotarme ahora' />
   </main>
 </Layout>

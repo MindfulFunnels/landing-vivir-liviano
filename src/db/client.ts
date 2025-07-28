@@ -10,7 +10,7 @@ const client = createClient({
 
 export const addUser = async (name: string, email: string) => {
   try {
-    await createContact(name, email);
+    // await createContact(name, email);
     await client.execute({
       sql: "INSERT INTO Usuarios (name, email) VALUES (?, ?)",
       args: [name, email],

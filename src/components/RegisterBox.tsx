@@ -92,7 +92,9 @@ export default function RegisterBox({
   return (
     <div className='w-full'>
       <form className='flex flex-col gap-6 p-8 glass-card rounded-xl'>
-        <h2 className='text-center gradient-text mb-4 text-white'>{title}</h2>
+        <h2 className='mb-4 text-center text-white underline gradient-text'>
+          {title}
+        </h2>
 
         <input
           ref={nameRef}
@@ -101,7 +103,7 @@ export default function RegisterBox({
           name='name'
           required
           placeholder={namePlaceholder}
-          className='w-full p-4 text-lg border border-white/20 rounded-lg bg-white/5 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-accent)] focus:ring-offset-2 focus:ring-offset-[color:var(--color-secondary)]'
+          className='w-full p-4 text-[16px] border border-white/20 rounded-lg bg-white/5 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-accent)] focus:ring-offset-2 focus:ring-offset-[color:var(--color-secondary)]'
         />
 
         <input
@@ -111,15 +113,15 @@ export default function RegisterBox({
           name='email'
           required
           placeholder={emailPlaceholder}
-          className='w-full p-4 text-lg border border-white/20 rounded-lg bg-white/5 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-accent)] focus:ring-offset-2 focus:ring-offset-[color:var(--color-secondary)]'
+          className='w-full p-4 text-[16px] border border-white/20 rounded-lg bg-white/5 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-accent)] focus:ring-offset-2 focus:ring-offset-[color:var(--color-secondary)]'
         />
 
         {errorMessages && (
-          <p className='text-red-400 text-sm text-center'>{errorMessages}</p>
+          <p className='text-sm text-center text-red-400'>{errorMessages}</p>
         )}
 
         {successMessage && (
-          <p className='text-green-400 text-sm text-center'>{successMessage}</p>
+          <p className='text-sm text-center text-green-400'>{successMessage}</p>
         )}
 
         {isSubmitting ? (
@@ -129,14 +131,14 @@ export default function RegisterBox({
         ) : (
           <button
             type='submit'
-            className='w-full px-10 py-4 text-lg font-bold text-white transition-all duration-300 bg-gradient-to-r from-[color:var(--color-accent)] to-[color:var(--color-primary)] rounded-lg hover:from-[color:var(--color-primary)] hover:to-[color:var(--color-accent)] hover:scale-105'
+            className='w-full px-10 py-4 text-[16px] font-bold text-white transition-all duration-700 bg-gradient-to-r from-[color:var(--color-accent)] to-[color:var(--color-primary)] rounded-lg hover:scale-105'
             onClick={handleSubmit}
           >
             {buttonText}
           </button>
         )}
 
-        <p className='text-center text-sm text-white'>{secureMessage}</p>
+        <p className='text-sm text-center text-white'>{secureMessage}</p>
       </form>
     </div>
   );

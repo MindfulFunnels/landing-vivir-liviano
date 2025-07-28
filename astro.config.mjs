@@ -17,5 +17,9 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
+  server: {
+    host: true, // Habilita el acceso desde la red local
+  },
+
   adapter: vercel(),
 });
