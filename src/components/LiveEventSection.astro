@@ -44,10 +44,12 @@ import EventCard from "./EventCard.astro";
     <h2>
       {timeLabel}
     </h2>
-    <div class='grid mt-4 space-y-3 md:grid-cols-3 md:gap-6 md:space-y-0'>
+    <div
+      class='grid grid-cols-2 mt-4 space-y-3 md:grid-cols-3 md:gap-6 md:space-y-0'
+    >
       {
         times.map((t) => (
-          <div class='flex items-center justify-center gap-4 '>
+          <div class='flex items-center justify-center gap-1 '>
             <h4 class={`${t.flag} w-6 h-4 rounded shadow-sm`} />
             <h4 class='text-xl font-bold md:text-2xl'>{t.time}</h4>
             <h4 class='text-base md:text-lg text-[--color-secondary]'>
