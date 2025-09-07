@@ -32,7 +32,7 @@
 
 html {
   font-family: "Special Gothic Expanded One", sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   background: var(--color-primary);
   background-attachment: fixed;
   color: var(--color-text);
@@ -87,17 +87,65 @@ button {
 }
 
 .ctabutton {
-  @apply inline-flex items-center justify-center px-6 py-3 text-white transition-all rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2;
-  background-image: linear-gradient(to right, var(--color-accent), var(--color-primary));
-  transition: background-position 0.8s ease-in-out;
+  @apply inline-flex items-center justify-center px-8 py-4 text-white transition-all rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2;
+  background-image: linear-gradient(90deg, rgba(0,180,216,0.95) 0%, rgba(0,119,182,0.95) 100%);
+  transition: transform 0.18s cubic-bezier(.2,.9,.3,1), box-shadow 0.18s ease, background-position 0.8s ease-in-out;
   background-size: 200% 100%;
   background-position: left center;
-  transition: all 0.3s ease-in-out;
+  padding-left: 1.25rem; /* ensure consistent */
+  padding-right: 1.25rem;
+  letter-spacing: 0.02em;
+  font-size: 1rem;
 }
 
 .ctabutton:hover {
-  scale: 1.05;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 18px 36px rgba(2,6,23,0.35), 0 6px 12px rgba(0,0,0,0.25);
   background-position: right center;
+}
+
+.btn-large {
+  @apply px-10 py-4 text-lg rounded-xl;
+}
+
+.input-lg {
+  @apply p-4 text-base rounded-xl border border-white/20 bg-white/5 placeholder-white/50;
+}
+
+.countdown-wrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.count-item {
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  min-width: 88px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(2,6,23,0.25);
+}
+
+.count-number {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.count-label {
+  font-size: 0.75rem;
+  color: var(--color-text-alt);
+  margin-top: 0.25rem;
+}
+
+/* Countdown hero: background image placed to the left (behind content). Hidden on small screens */
+.countdown-wrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
 }
 
 
